@@ -31,7 +31,7 @@ The easiest way to start is using the built-in template generator:
    - **Mod Name**: Display name for your mod
    - **Version**: Start with "1.0.0" (use semantic versioning)
    - **Author**: Your name or handle
-   - **Mod Type**: Select from ui, graphics, tactics, database, or misc
+   - **Mod Type**: Select from ui, bundle, camera, skins, graphics, tactics, database, ruleset, editor-data, audio, or misc
    - **Description**: Brief summary of what your mod does
    - **Homepage**: (Optional) Your GitHub repo or website
 4. Choose a save location
@@ -122,7 +122,7 @@ The `manifest.json` file is the core of every mod. It tells FM Reloaded how to i
 |-------|------|-------------|
 | `name` | string | Display name of your mod (shown in mod list) |
 | `version` | string | Semantic version (e.g., "1.0.0", "2.1.3") |
-| `type` | string | Mod category: `ui`, `graphics`, `tactics`, `database`, `misc` |
+| `type` | string | Mod category: `ui`, `bundle`, `camera`, `skins`, `graphics`, `tactics`, `database`, `ruleset`, `editor-data`, `audio`, `misc` |
 | `author` | string | Your name, handle, or team name |
 | `files` | array | List of file installation instructions |
 
@@ -205,11 +205,11 @@ Disabling a mod removes the installed files but keeps the copy in the workspace 
 
 FM Reloaded supports different mod types, each with specific installation behavior:
 
-### UI / Bundle Mods (`"type": "ui"`)
+### UI / Bundle Mods (`"type": "ui"` or `"bundle"`)
 
 - **Install Location**: Game data folder (StandaloneWindows64 / StandaloneOSX)
-- **Common Files**: `.bundle` files
-- **Examples**: Interface tweaks, custom panels, skin modifications
+- **Common Files**: `.bundle` files and other match presentation assets
+- **Examples**: Interface tweaks, presentation packs, bundle replacements
 
 ```json
 {
@@ -223,6 +223,19 @@ FM Reloaded supports different mod types, each with specific installation behavi
   ]
 }
 ```
+
+### Camera Mods (`"type"`: "camera")
+
+- **Install Location**: Typically `BepInEx/plugins/` via manifest mappings
+- **Common Files**: `.dll` (BepInEx plug-ins)
+- **Use for**: Camera tweaks, gameplay presentation mods
+
+
+### Skins Mods (`"type": "skins"`)
+
+- **Install Location**: `Documents/Sports Interactive/Football Manager 26/skins/`
+- **Common Files**: Skin folders containing layout XML, graphics, and config files
+- **Tip**: Ship the entire skin directory; FM Reloaded copies it intact
 
 ### Graphics Mods (`"type": "graphics"`)
 
@@ -245,6 +258,12 @@ FM Reloaded supports different mod types, each with specific installation behavi
 }
 ```
 
+### Audio Mods (`"type": "audio"`)
+
+- **Install Location**: Game data folder (usually under `data/audio/`)
+- **Common Files**: `.wav`, `.fsb`, `.bank`
+- **Use for**: Match sound packs, ambience overhauls
+
 ### Tactics Mods (`"type": "tactics"`)
 
 - **Install Location**: `Documents/Sports Interactive/Football Manager 26/tactics/`
@@ -264,13 +283,26 @@ FM Reloaded supports different mod types, each with specific installation behavi
 
 ### Database Mods (`"type": "database"`)
 
-- **Install Location**: Game data folder
-- **Common Files**: `.db`, `.dbc`
+- **Install Location**: Game data folder (e.g., `shared/data/database/db/2600/`)
+- **Common Files**: `.db`, `.dbc`, `.lnc`
+- **Tip**: Use the manifest `cleanup` block to remove conflicting stock data
+
+### Ruleset Mods (`"type": "ruleset"`)
+
+- **Install Location**: `Documents/Sports Interactive/Football Manager 26/editor data/`
+- **Common Files**: `.fmf`
+- **Use for**: Competition rule changes, league restructures
+
+### Editor Data Mods (`"type": "editor-data"`)
+
+- **Install Location**: `Documents/Sports Interactive/Football Manager 26/editor data/`
+- **Common Files**: `.fmf`, supplemental editor exports
+- **Note**: Use when bundling non-ruleset editor adjustments
 
 ### Misc Mods (`"type": "misc"`)
 
-- **Install Location**: User data folder
-- **Use for**: Editor files, custom tools, utilities
+- **Install Location**: User data folder (varies by manifest)
+- **Use for**: Utilities, custom scripts, supplementary assets
 
 ---
 
