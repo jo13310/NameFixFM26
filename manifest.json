@@ -1,0 +1,63 @@
+{
+  "name": "FM26 Open Names Pack",
+  "version": "1.1.0",
+  "type": "database",
+  "author": "Community Maintainers",
+  "homepage": "https://github.com/example/fm26-open-names",
+  "description": "Community-maintained Football Manager 2026 real names data consolidated into a single open licence LNC file.",
+  "files": [
+    {
+      "source": "assets/lnc/FM26-open-names.lnc",
+      "target_subpath": "shared/data/database/db/2600/lnc/all/FM26-open-names.lnc"
+    }
+  ],
+  "cleanup": [
+    {
+      "target_path": "shared/data/database/db/2600/lnc/all/",
+      "remove_files": [
+        "ac milan (wom).lnc",
+        "acc Inter unlic 26.lnc",
+        "acmilan unlic 26.lnc",
+        "fake.lnc",
+        "inter (wom).lnc",
+        "inter unlic 26.lnc",
+        "japanese names.lnc",
+        "lazio (wom).lnc",
+        "lic_dan_swe_fra.lnc",
+        "licensing club name_fm26.lnc",
+        "men lazio.lnc",
+        "men.atalanta.lnc"
+      ]
+    },
+    {
+      "target_path": "shared/data/database/db/2600/edt/permanent/",
+      "remove_files": [
+        "fake.edt"
+      ]
+    },
+    {
+      "target_path": "shared/data/database/db/2600/dbc/permanent/",
+      "remove_files": [
+        "1_japan_removed_clubs.dbc",
+        "brazil_kits.dbc",
+        "england.dbc",
+        "forbidden names.dbc",
+        "france.dbc",
+        "japan_fake.dbc",
+        "japan_unlicensed_random_names.dbc",
+        "j league non player.dbc",
+        "licensing_post_data_lock.dbc",
+        "licensing2.dbc",
+        "licensing26.dbc",
+        "netherlands.dbc"
+      ]
+    },
+    {
+      "target_path": "shared/data/database/db/2600/dbc/language/",
+      "remove_files": [
+        "Licensing2.dbc",
+        "Licensing2_chn.dbc"
+      ]
+    }
+  ]
+}
